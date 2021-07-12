@@ -1,7 +1,10 @@
 # Mentorchain | Blockchain application development
 Welcome to ``MentorChain``! This is the place where we evolve as blockchain developers for contributing to the decentralized ecosystem.
+
 We have mentioned some of the tasks and references that will help you complete those tasks. These are the basics of blockchain application development and you will be able to complete your project once you have a basic understanding of the tasks mentioned below.
+
 You can fork this repository and start working on the tasks. All you need to do is push your code to the repository. Make sure you have all your files inside a folder that goes by your name. We will aggregate the tasks of every individuals/teams once you complete the tasks.
+
 Any task with the tag ``Program:`` in it needs to be pushed into the github repo.
 
 ## Pre-requisities
