@@ -40,8 +40,8 @@ Blockchain techonology key features include transparency and immutablility which
 -``Program:`` Create functions to view winning proposal and winner name after the voting ends.
 
 ### References
-- https://hackernoon.com/blockchain-for-voting-and-elections-9888f3c8bf72
-- https://techpoint.africa/2021/06/12/blockchain-nigeria-elections/
+- https://www.youtube.com/watch?v=ucszgKGFnwc
+- https://www.youtube.com/watch?v=3681ZYbDSSk
 - https://docs.soliditylang.org/en/v0.8.4/solidity-by-example.html#voting 
 
 ## Step 3: Introduction to OpenZeppelin
@@ -56,11 +56,11 @@ OpenZeppelin is an opensource organization that layouts the common practises and
 - Study token standards source code from Github.
 
 ### References
-- https://openzeppelin.com/
+- https://medium.com/@jgulacsy/use-the-open-zeppelin-smart-contract-framework-51ab17c5ae9
 - https://github.com/OpenZeppelin/openzeppelin-contracts
 - https://docs.openzeppelin.com/contracts/4.x/
-- https://docs.openzeppelin.com/contracts/4.x/api/access
-- https://forum.openzeppelin.com/
+- https://www.trufflesuite.com/guides/robust-smart-contracts-with-openzeppelin.html
+- https://docs.openzeppelin.com/starter-kits/tutorial
 
 ## Step 4: Creating your own ERC20 token
 ERC20 tokens are essential in blockchain development. They can be used in DEFI(Decentralized Finance), governance, initial offering and so much more. Depending on the need and requirement of any project the token economics or tokenomics can be tweaked to meet these desired changes. 
