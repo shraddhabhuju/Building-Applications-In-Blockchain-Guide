@@ -17,13 +17,40 @@ contract StudentRecords {
 
     mapping(uint => address) studentToAddress;
     mapping(address => Student) students;
-    mapping(address => uint) count;
+    mapping(address => uint) registration;
+    mapping(address => uint) redeemetherCount;
+   
+
+    // Payable constructor can receive Ether
     
+    function redeemEther() public {
+        if(_checkforrecord())
+        {
+        require(redeemetherCount[msg.sender] == 0);
+        msg.sender.transfer(1 ether);
+        redeemetherCount[msg.sender]++;
+        }
+        
+        else{
+            revert('You are not registered');
+            
+        }
+        
+    }
+     function balanceof() external view returns(uint) {
+        
+        return address(this).balance;
+    }
+    
+    function depositether() external payable{
+        
+        
+    }
 
     
     function registerStudent(string memory _name, uint _rollno, uint _percentage) public {
-        require(count[msg.sender]==0);
-        count[msg.sender]++;
+        require(registration[msg.sender]==0);
+        registration[msg.sender]++;
         students[msg.sender] = Student(StudentId, _name, _rollno, _percentage);
         studentToAddress[StudentId]= msg.sender;
         // emit AddStudent(_name, _rollno, _percentage);
@@ -42,15 +69,20 @@ contract StudentRecords {
     
     function updateStudent(uint _id, string memory _name, uint _rollno, uint _percentage) public{
         
-        
-        
-        require(studentToAddress[_id] == msg.sender);
+        if(_checkforrecord())
+        {
+             require(studentToAddress[_id] == msg.sender);
         require(students[msg.sender].id==_id);
         
         students[msg.sender].name = _name;
         students[msg.sender].rollNo= _rollno;
         students[msg.sender].percentage=_percentage;
         // emit EditStudent(_id, _name, _rollno, _percentage);
+        } else{
+            revert('You arenot registered');
+        }
+        
+       
     }
     
     function deleteStudent() public{
@@ -60,6 +92,15 @@ contract StudentRecords {
     
    
     
+}
+function _checkforrecord() private view returns(bool) {
+    for(uint i=0;i<=StudentId;i++)
+    {
+        if(studentToAddress[i]==msg.sender){
+            return true;
+        }
+    }
+    return false;
 }
 }
 
