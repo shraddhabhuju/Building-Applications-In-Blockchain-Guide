@@ -24,7 +24,7 @@ contract VotingSystem{
     uint start;
     uint end;
     
-    constructor(uint _start, uint _end) public {
+    constructor(uint _start, uint _end) public{
         chairperson=msg.sender;
       createdtime=block.timestamp;  
       start=createdtime+ _start;
