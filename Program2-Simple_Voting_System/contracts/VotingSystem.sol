@@ -1,6 +1,8 @@
+// SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
+import "@openzeppelin/contracts/access/AccessControl.sol";
 
-contract VotingSystem{
+contract VotingSystem is AccessControl{
     
     struct Voters{
          bool voted;
@@ -14,18 +16,20 @@ contract VotingSystem{
         uint votecount;
         
     }
+    bytes32 public constant CHAIRMAN = keccak256("CHAIRMAN");
+
+  
     mapping(uint=> Proposal) public ProposalsStore;
     mapping(address=>Voters) Voterstore;
     
     uint ProposalId=0;
-    address public chairperson;
-    
     uint createdtime;
     uint start;
     uint end;
     
-    constructor(uint _start, uint _end) public{
-        chairperson=msg.sender;
+    
+    constructor(uint _start, uint _end) {
+       _setupRole(CHAIRMAN, msg.sender);
       createdtime=block.timestamp;  
       start=createdtime+ _start;
       end=createdtime+ _end;
@@ -39,9 +43,8 @@ contract VotingSystem{
         ProposalsStore[ProposalId]= Proposal(ProposalId, _ProposalName,0);
         
     }
-    function giveRightToVote(address Voteraddress) public{
+    function giveRightToVote(address Voteraddress) public onlyRole (CHAIRMAN){
         require(block.timestamp>=start && block.timestamp<=end);
-        require(msg.sender==chairperson);
         require(Voterstore[Voteraddress].weight == 0);
         Voterstore[Voteraddress].weight =1;
         
